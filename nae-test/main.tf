@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "primary-rg" {
 }
 
 module "networking" {
-  source = "../../../modules/azure/networking"
+  source = "../viewdeck-azure/networking"
   
   resource_group            = "${azurerm_resource_group.primary-rg.name}"
   location                  = "${azurerm_resource_group.primary-rg.location}"
@@ -15,7 +15,7 @@ module "networking" {
 }
 
 module "database" {
-  source = "../../../modules/azure/compute/database"
+  source = "../viewdeck-azure/compute/database"
 
   resource_group            = "${azurerm_resource_group.primary-rg.name}"
   location                  = "${azurerm_resource_group.primary-rg.location}"
@@ -37,7 +37,7 @@ module "database" {
 }
 
 module "application" {
-  source = "../../../modules/azure/compute/application"
+  source = "../viewdeck-azure/compute/application"
   
   resource_group            = "${azurerm_resource_group.primary-rg.name}"
   location                  = "${azurerm_resource_group.primary-rg.location}"
@@ -60,7 +60,7 @@ module "application" {
 }
 
 module "webserver" {
-  source = "../../../modules/azure/compute/application"
+  source = "../viewdeck-azure/compute/application"
   
   resource_group            = "${azurerm_resource_group.primary-rg.name}"
   location                  = "${azurerm_resource_group.primary-rg.location}"
