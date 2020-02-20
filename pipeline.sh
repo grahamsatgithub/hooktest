@@ -2,4 +2,4 @@
 
 echo "This is a test pipeline"
 
-sudo docker run -v $PWD:/host -ti --entrypoint=/host/terraform.sh hashicorp/terraform
+sudo docker run -v $PWD:/host -i --entrypoint=/host/terraform.sh hashicorp/terraform
