@@ -2,7 +2,7 @@
 
 set -ex
 
-cd /host/Terraform/terraform-generator/plans/nae-test
+cd nae-test
 
 terraform init
 terraform plan --out=plan.out
