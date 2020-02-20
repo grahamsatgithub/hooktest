@@ -4,6 +4,5 @@ pool:
 container: ubuntu:16.04
 
 steps:
-- script: printenv
 - script: date
-- script: echo "Hello!"
+- script: ./terraform.sh
