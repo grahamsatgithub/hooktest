@@ -1,8 +1,8 @@
 pool:
   vmImage: 'ubuntu-latest'
 
-container: registry.hub.docker.com/hashicorp/terraform
+#container: registry.hub.docker.com/hashicorp/terraform
 
 steps:
 - script: date
-- script: ./terraform.sh
+- script: ./pipeline.sh
