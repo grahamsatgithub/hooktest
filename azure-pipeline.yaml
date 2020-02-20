@@ -1,7 +1,7 @@
 pool:
   vmImage: 'ubuntu-latest'
 
-container: hashicorp/terraform
+container: registry.hub.docker.com/hashicorp/terraform
 
 steps:
 - script: date
