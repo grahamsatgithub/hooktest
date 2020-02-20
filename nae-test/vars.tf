@@ -31,7 +31,7 @@ variable "region" {
 # VNET VARS
 
 variable "virtual_network_name" {
-  default = "test-nae-vnet-primary"
+  default = "test-nae-vnet-test"
 }
 
 variable "address_space" {
