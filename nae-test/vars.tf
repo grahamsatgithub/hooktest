@@ -20,7 +20,7 @@ variable "tenant_id" {
 }
 
 variable "resource_group_name" {
-  default = "test-nae-rg-primary"
+  default = "test-nae-rg-test"
 }
 
 variable "region" {
