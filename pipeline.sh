@@ -17,11 +17,12 @@ echo "hostshare=$hostshare"
 [[ -z "$hostmount" ]] && exit
 [[ -z "$hostshare" ]] && exit
 
+cifsconfig="/etc/smbcredentials"
+cifscred="$cifsconfig/peith7teashoo7ab.cred"
+
 cifsshare="//peith7teashoo7ab.file.core.windows.net/pipeline"
 cifsmount="/mnt/peith7teashoo7ab"
 cifsoptions="vers=3.0,credentials=$cifscred,dir_mode=0777,file_mode=0777,serverino"
-cifsconfig="/etc/smbcredentials"
-cifscred="$cifsconfig/peith7teashoo7ab.cred"
 
 sudo mkdir -vp "$cifsmount"
 sudo mkdir -vp "$cifsconfig"
