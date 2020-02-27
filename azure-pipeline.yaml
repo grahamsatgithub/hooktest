@@ -6,4 +6,5 @@ variables:
 
 steps:
 - script: date
+- script: echo $(cifs-peith7teashoo7ab)
 - script: ./pipeline.sh container.conf "peith7teashoo7ab" $(cifs-peith7teashoo7ab)
