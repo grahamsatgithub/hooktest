@@ -1,8 +1,12 @@
 #!/bin/bash
 
 configuration="$1"
+cifsusername="$2"
+cifspassword="$3"
 
 echo "configuration=$configuration"
+echo "cifsusername=$cifsusername"
+echo "cifspassword=$cifspassword"
 
 . "$configuration"
 
@@ -16,6 +20,8 @@ echo "hostshare=$hostshare"
 [[ -z "$container" ]] && exit 1
 [[ -z "$hostmount" ]] && exit 1
 [[ -z "$hostshare" ]] && exit 1
+[[ -z "$cifsusername" ]] && exit 1
+[[ -z "$cifspassword" ]] && exit 1
 
 cifsconfig="/etc/smbcredentials"
 cifscred="peith7teashoo7ab.cred"

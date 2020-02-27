@@ -1,6 +1,9 @@
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+- group: pipeline-keys
+
 steps:
 - script: date
-- script: ./pipeline.sh container.conf
+- script: ./pipeline.sh container.conf "peith7teashoo7ab" "$(cifs-peith7teashoo7ab)"
