@@ -11,29 +11,28 @@ echo "container=$container"
 echo "hostmount=$hostmount"
 echo "hostshare=$hostshare"
 
-[[ -z "$configuration" ]] && exit
-[[ -z "$entrypoint" ]] && exit
-[[ -z "$container" ]] && exit
-[[ -z "$hostmount" ]] && exit
-[[ -z "$hostshare" ]] && exit
+[[ -z "$configuration" ]] && exit 1
+[[ -z "$entrypoint" ]] && exit 1
+[[ -z "$container" ]] && exit 1
+[[ -z "$hostmount" ]] && exit 1
+[[ -z "$hostshare" ]] && exit 1
 
 cifsconfig="/etc/smbcredentials"
-cifscred="$cifsconfig/peith7teashoo7ab.cred"
+cifscred="peith7teashoo7ab.cred"
 
 cifsshare="//peith7teashoo7ab.file.core.windows.net/pipeline"
 cifsmount="/mnt/peith7teashoo7ab"
-cifsoptions="vers=3.0,credentials=$cifscred,dir_mode=0777,file_mode=0777,serverino"
+cifsoptions="vers=3.0,credentials=$cifsconfig/$cifscred,dir_mode=0777,file_mode=0777,serverino"
 
 sudo mkdir -vp "$cifsmount"
 sudo mkdir -vp "$cifsconfig"
 
-sudo bash -c "echo \"username=peith7teashoo7ab\" > $cifscred"
-sudo bash -c "echo \"password=3eQgk6CuzLlTKyyyeeb/UWuBj5TdoIdEkJ7L4lNImb2sn9++Blf/WAQc4JpNZoynJYZt6C4EjfQ4uvAFZMdBkA==\" >> $cifscred"
+sudo mv -v "$cifscred" "$cifsconfig/$cifscred"
 
-sudo chmod -v 600 "$cifscred"
+sudo chown -v root:root "$cifsconfig/$cifscred"
+sudo chmod -v 600 "$cifsconfig/$cifscred"
 
-sudo bash -c "echo \"$cifsshare $cifsmount cifs nofail,$cifsoptions\" >> /etc/fstab"
-sudo mount -vt cifs "$cifsshare" "$cifsmount" -o "$cifsoptions"
+sudo mount -vt cifs "$cifsshare" "$cifsmount" -o "$cifsoptions" || exit 1
 
 docker run -i \
     -v "$PWD:$hostmount" \
